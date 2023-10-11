@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["errors","Errors possible when decoding deflate/zlib/gzip streams"]],"struct":[["DeflateDecoder","A deflate decoder instance."],["DeflateEncoder","A simple Deflate Encoder."],["DeflateOptions","Options that can influence decompression in Deflate/Zlib/Gzip"]]};

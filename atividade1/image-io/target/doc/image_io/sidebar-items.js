@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["open_image","This function is used to open an image and convert it to rgba8, then return it."],["save_img","This function is used to save a RgbaImage in a certain path and a certain format defined in a string."],["save_png","This function is used to save a RgbaImage in a certain path in Png format. "]]};
