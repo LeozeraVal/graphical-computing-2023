@@ -6,12 +6,8 @@ pub fn main() {
     let mut imgbuf = image::ImageBuffer::new(img_width,img_height);
 
     for (x, y, pixel) in imgbuf.enumerate_pixels_mut() {
-        println!("x: {}", x);
-        println!("y: {}", y);
         let r = (x as f32) as u8;
         let g = (y as f32) as u8;
-        println!("r: {}", r);
-        println!("g: {}", g);
         *pixel = image::Rgb([r, g, 0]);
     }
 
