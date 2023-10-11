@@ -16,4 +16,29 @@ pub fn main() {
         Ok(_) => println!("Image Saved Successfully"),
         Err(_image_error) => panic!("Problem saving the image")
     };
+
+    for (x, y, pixel) in imgbuf.enumerate_pixels_mut() {
+        if 230 > x && x > 26 && 230 > y && y > 26 {
+            *pixel = image::Rgb([255, 255, 255]);
+        }
+    }
+
+    let result = save_png(&imgbuf, "./rectangle.png");
+    let _result_image = match result {
+        Ok(_) => println!("Image Saved Successfully"),
+        Err(_image_error) => panic!("Problem saving the image")
+    };
+
+    for (x, y, pixel) in imgbuf.enumerate_pixels_mut() {
+        if 200 > x && x > 56 && 200 > y && y > 56 {
+            *pixel = image::Rgb([45, 60, 70]);
+        }
+    }
+
+    let result = save_png(&imgbuf, "./shape.png");
+    let _result_image = match result {
+        Ok(_) => println!("Image Saved Successfully"),
+        Err(_image_error) => panic!("Problem saving the image")
+    };
+
 }
