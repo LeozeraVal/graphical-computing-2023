@@ -1,26 +1,26 @@
 use std::{ops, vec};
 
 pub struct Vec3 {
-    pub coords: Vec<f64>,
+    pub values: Vec<f64>,
 }
 
 impl Vec3 {
     fn new(x: f64, y: f64, z: f64) -> Self {
         Self {
-            coords: vec![x, y, z],
+            values: vec![x, y, z],
         }
     }
 
     fn sum(mut self, other: &Vec3) -> Self {
         for i in 0..3 {
-            self.coords[i] += other.coords[i];
+            self.values[i] += other.values[i];
         }
         self
     }
 
     fn multiply(mut self, factor: f64) -> Self {
         for i in 0..3 {
-            self.coords[i] *= factor;
+            self.values[i] *= factor;
         }
         self
     }
@@ -34,39 +34,39 @@ impl Vec3 {
     }
 
     fn length_squared(&self) -> f64 {
-        self.coords[0]*self.coords[0] + self.coords[1]*self.coords[1] + self.coords[2]*self.coords[2]
+        self.values[0]*self.values[0] + self.values[1]*self.values[1] + self.values[2]*self.values[2]
     }
 }
 
 pub fn v3_to_string(u: &Vec3) -> String {
-    u.coords.iter().map(|c| c.to_string()).collect::<Vec<String>>().join(" ")
+    u.values.iter().map(|c| c.to_string()).collect::<Vec<String>>().join(" ")
 }
 
 impl ops::Add<Vec3> for &Vec3 {
     type Output = Vec3;
     fn add(self, rhs: Vec3) -> Self::Output {
-        Vec3 { coords: vec![self.coords[0]+rhs.coords[0],self.coords[1]+rhs.coords[1],self.coords[2]+rhs.coords[2]] }
+        Vec3 { values: vec![self.values[0]+rhs.values[0],self.values[1]+rhs.values[1],self.values[2]+rhs.values[2]] }
     }
 }
 
 impl ops::Sub<Vec3> for &Vec3 {
     type Output = Vec3;
     fn sub(self, rhs: Vec3) -> Self::Output {
-        Vec3 { coords: vec![self.coords[0]-rhs.coords[0],self.coords[1]-rhs.coords[1],self.coords[2]-rhs.coords[2]] }
+        Vec3 { values: vec![self.values[0]-rhs.values[0],self.values[1]-rhs.values[1],self.values[2]-rhs.values[2]] }
     }
 }
 
 impl ops::Mul<Vec3> for &Vec3 {
     type Output = Vec3;
     fn mul(self, rhs: Vec3) -> Self::Output {
-        Vec3 { coords: vec![self.coords[0]*rhs.coords[0],self.coords[1]*rhs.coords[1],self.coords[2]*rhs.coords[2]] }
+        Vec3 { values: vec![self.values[0]*rhs.values[0],self.values[1]*rhs.values[1],self.values[2]*rhs.values[2]] }
     }
 }
 
 impl ops::Mul<&Vec3> for f64 {
     type Output = Vec3;
     fn mul(self, rhs: &Vec3) -> Self::Output {
-        Vec3 { coords: vec![self*rhs.coords[0],self*rhs.coords[1],self*rhs.coords[2]] }
+        Vec3 { values: vec![self*rhs.values[0],self*rhs.values[1],self*rhs.values[2]] }
     }
 }
 
@@ -86,14 +86,14 @@ impl ops::Div<f64> for &Vec3 {
 }
 
 pub fn dot(u: &Vec3, v: &Vec3) -> f64 {
-    u.coords[0]*v.coords[0]+u.coords[1]*v.coords[1]+u.coords[2]*v.coords[2]
+    u.values[0]*v.values[0]+u.values[1]*v.values[1]+u.values[2]*v.values[2]
 }
 
 pub fn cross(u: &Vec3, v: &Vec3) -> Vec3 {
-    Vec3 { coords: vec![
-            u.coords[1]*v.coords[2]-u.coords[2]*v.coords[1],
-            u.coords[2]*v.coords[0]-u.coords[0]*v.coords[2],
-            u.coords[0]*v.coords[1]-u.coords[1]*v.coords[0]] }
+    Vec3 { values: vec![
+            u.values[1]*v.values[2]-u.values[2]*v.values[1],
+            u.values[2]*v.values[0]-u.values[0]*v.values[2],
+            u.values[0]*v.values[1]-u.values[1]*v.values[0]] }
 }
 
 pub fn unit_vector(u: &Vec3) -> Vec3 {
@@ -101,7 +101,7 @@ pub fn unit_vector(u: &Vec3) -> Vec3 {
 }
 
 pub fn write_color(pixel_color: Vec3) {
-    println!("{} {} {}", (255.999*pixel_color.coords[0]) as u32, (255.999*pixel_color.coords[1]) as u32, (255.999*pixel_color.coords[2]) as u32)
+    println!("{} {} {}", (255.999*pixel_color.values[0]) as u32, (255.999*pixel_color.values[1]) as u32, (255.999*pixel_color.values[2]) as u32)
 }
 
 /// TESTS
